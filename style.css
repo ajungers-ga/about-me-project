@@ -1,0 +1,55 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box; 
+}
+
+body {
+    font-family: fantasy, sans-serif;
+    line-height: 1.5;
+    background-color: lightgray;
+    color: black;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    background-color: bisque;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
+
+h1 {
+  margin-bottom: 10px;
+}
+
+header img {
+    display: block;
+    margin:10px auto;
+    border-radius: 50%;
+    /* why is this not working? */
+}
+
+.main {
+    display: flex;
+    background-color: lightslategray;
+    justify-content: space-between;
+    margin: 20px;
+    /* border-radius: 20%; */
+    /* width: 100%; */
+
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    color: black;
+    margin-top: 50px;
+}
