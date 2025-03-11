@@ -1,3 +1,7 @@
+//varaibles
+
+
+
 const images = [
     "images/IMG_E0838.JPG",
     // "images/Ingram_truck.jpg",
@@ -20,17 +24,35 @@ let currentIndex = 0;
 const  prevButton = document.getElementById("prevbutton");
 const nextButton = document.getElementById("nextbutton");
 const rotationFeature = document.querySelector(".rotationfeature");
+const nerdyGlassesBtn=document.getElementById('nerdy-glasses');
+const navMenu=document.getElementById('nav-sections');
+
+
+
+
+
+
+// my image element
 
 const imageElement = document.createElement("img");
 imageElement.src = images[currentIndex];
 imageElement.alt = "My Passions Image";
-imageElement.width = 300;
-
+imageElement.width = 200;
 rotationFeature.appendChild(imageElement);
+
+
+
+//functions
 
 function updateImage(){
     imageElement.src = images[currentIndex];
 }
+
+
+
+
+//event listeners
+
 
 nextButton.addEventListener("click",() => {
     currentIndex = (currentIndex + 1) % images.length;
@@ -40,5 +62,18 @@ nextButton.addEventListener("click",() => {
 prevButton.addEventListener("click", () => {
     currentIndex = (currentIndex - 1) % images.length;
     updateImage();
-    // more content?
+    
 });
+
+nerdyGlassesBtn.addEventListener('click',() => {
+    navMenu.classList.toggle('show');
+});
+
+
+
+
+
+
+
+
+
