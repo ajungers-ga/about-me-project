@@ -1,7 +1,7 @@
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -13,27 +13,29 @@ body {
 }
 
 .header {
-    display: flex;
+    display: grid;
     background-color: bisque;
     color: black;
     padding: 20px;
     text-align: center;
     justify-content: center;
     align-items: center;
-    border-radius: 25%;
+    border-radius: 75%;
 }
 
 
 h1 {
-  margin-bottom: 10px;
-  text-align: center;
+    text-align: center;
 }
 
 header img {
     display: block;
-    margin:10px auto;
+    /* margin:10px; */
     border-radius: 50%;
 }
+
+/* /////////////////////////////////////////////// */
+
 
 .main {
     background-color: lightcyan;
@@ -49,18 +51,20 @@ header img {
     color: black;
     margin-top: 50px;
     border-radius: 25px;
+    padding: 40px;
 }
 
-.menu {
-    display: none;
-    list-style: none;
-    padding: 0;
-    gap: 50px;
-}
+/* buttons */
 
-.menu.show {
-    display: block;
-    /* dont know why right now but this needs to be set to block to function properly */
+
+button {
+    background-color: black;
+    color: cyan;
+    border: 1px solid cyan;
+    padding: 5px 5px;
+    border-radius: 25%;
+    cursor: pointer;
+    margin: 5px;
 }
 
 #nerdy-glasses {
@@ -70,3 +74,60 @@ header img {
     border: none;
     margin-left: 20px;
 }
+
+
+/* dark mode */
+
+
+/* dark mode */
+
+
+body.dark-mode {
+    background-color: black;
+    color: lightseagreen;
+}
+
+
+body.dark-mode .header,
+body.dark-mode .footer {
+    background-color: rgb(51, 0, 51);
+    color: cyan;
+}
+
+body.dark-mode .main {
+    background-color: rgb(102, 0, 102);
+    color: cyan;
+}
+
+body.dark-mode button {
+    background-color: hotpink;
+    color: black;
+}
+
+
+/* dropdown */
+
+.menu {
+    display: none;
+    list-style: none;
+    gap:15px;
+    flex-direction: column;
+    background-color: bisque;
+    position: absolute;
+    border-radius: 10px;
+}
+.menu.show {
+    display: flex;
+}
+
+.menu a {
+    color: black;
+    padding: 5px;
+}
+
+.menu li {
+    margin:5px 5px;
+}
+
+
+

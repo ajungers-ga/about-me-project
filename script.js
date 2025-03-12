@@ -1,7 +1,7 @@
 //varaibles
 
 
-
+// array below for carousel/rotation feature
 const images = [
     "images/IMG_E0838.JPG",
     // "images/Ingram_truck.jpg",
@@ -24,9 +24,12 @@ let currentIndex = 0;
 const  prevButton = document.getElementById("prevbutton");
 const nextButton = document.getElementById("nextbutton");
 const rotationFeature = document.querySelector(".rotationfeature");
-const nerdyGlassesBtn=document.getElementById('nerdy-glasses');
-const navMenu=document.getElementById('nav-sections');
+const nerdyGlassesBtn = document.getElementById('nerdy-glasses');
+const navMenu = document.getElementById('nav-sections');
+const darkModeToggle = document.getElementById('dark-mode');
 
+
+//cant add event listeners until we define the variables
 
 
 
@@ -58,9 +61,12 @@ nextButton.addEventListener("click",() => {
     currentIndex = (currentIndex + 1) % images.length;
     updateImage();
 })
-
+//1- currentIndex -1 goes back one image. 
+//2- if current value is 0, we don't want a negative number, rather a loop.  
+//3- + images.length (if currentIndex - 1, adding images.length makes it wrap around)
+//4- % images.length the mudulo (%) turns the array into a circular loop.
 prevButton.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1) % images.length;
+    currentIndex = (currentIndex - 1 + images.length) % images.length;;
     updateImage();
     
 });
@@ -69,7 +75,10 @@ nerdyGlassesBtn.addEventListener('click',() => {
     navMenu.classList.toggle('show');
 });
 
+darkModeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
 
+});
 
 
 
