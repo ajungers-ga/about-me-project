@@ -5,11 +5,14 @@
 }
 
 body {
-    font-family: fantasy, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 100;
     line-height: 1.5;
     background-color: lightgray;
     color: black;
     padding: 20px;
+    /* cursor:progress; */
+    /* border: 100px blue; */
 }
 
 .header {
@@ -26,6 +29,9 @@ body {
 
 h1 {
     text-align: center;
+    display: inline-block;
+    position: relative;
+    cursor:progress; 
 }
 
 header img {
@@ -36,6 +42,21 @@ header img {
 
 /* /////////////////////////////////////////////// */
 
+
+.tooltip {
+    position: absolute;
+    background-color: bisque;
+    color: cyan;
+    padding: 5px 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 5px;
+
+}
+
+.tooltip.show {
+    display: inline-block;
+}
 
 .main {
     background-color: lightcyan;
@@ -75,6 +96,19 @@ button {
     margin-left: 20px;
 }
 
+
+
+/* BELOW
+
+width and height are the same making the images a square.
+object-fit = Specifies how the contents of a replaced element should be scaled relative to the box established by its used height and width.
+*/
+.rotationfeature img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
 
 /* dark mode */
 
