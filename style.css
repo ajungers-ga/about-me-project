@@ -8,17 +8,17 @@ body {
     font-family: 'Poppins', sans-serif;
     font-weight: 100;
     line-height: 1.5;
-    background-color: lightgray;
+    background-color: rgb(185, 0, 195);
     color: black;
     padding: 20px;
-    /* cursor:progress; */
-    /* border: 100px blue; */
+    max-width: 2000px;
+    
 }
 
 .header {
     display: grid;
-    background-color: bisque;
-    color: black;
+    background-color: #ce9df2;
+    color: #4e0884;
     padding: 20px;
     text-align: center;
     justify-content: center;
@@ -26,57 +26,83 @@ body {
     border-radius: 75%;
 }
 
-
 h1 {
-    text-align: center;
-    display: inline-block;
     position: relative;
+    text-align: center;
+    display: inline-block;  
     cursor:progress; 
+    margin-left: 15px;
 }
 
-header img {
-    display: block;
-    /* margin:10px; */
-    border-radius: 50%;
-}
-
-/* /////////////////////////////////////////////// */
-
-
-.tooltip {
+#tooltip {
+    display: none;
     position: absolute;
-    background-color: bisque;
+    background-color: rgb(105, 3, 172);
     color: cyan;
     padding: 5px 5px;
     border-radius: 5px;
-    margin-top: 10px;
-    font-size: 5px;
-
+    margin-bottom: -20px;
+    margin-left: 2px;
+    font-size: 20px;
+    z-index: 100;
+    
 }
-
-.tooltip.show {
-    display: inline-block;
+header img {
+    display: block;
+    border-radius: 50%;
+    justify-content: center;
+    margin-left: 164px;
 }
 
 .main {
-    background-color: lightcyan;
+    background-color: #e7d5f5;
     padding: 20px;
     border-radius: 25px;
+    border: 15px solid purple;
 }
 
-.footer {
+
+#intro {
     display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#intro img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    border: 15px solid purple;
+}
+
+#intro h2 {
+    font-size: 30px;
+    text-align: center;
+    font-family:monospace;
+    border: 15px solid purple; 
+}
+
+#intro p {
+    padding: 25px;
+    border: 15px solid purple;
+}
+.footer {
+    display: grid;
+    background-color: #ce9df2 ;
+    color: #4e0884;
+    padding: 20px;
+    text-align: center;
+    text-decoration: underline;
     justify-content: center;
     align-items: center;
-    background-color: bisque;
-    color: black;
-    margin-top: 50px;
-    border-radius: 25px;
-    padding: 40px;
+    border-radius: 75%;
+    margin-top: 30px;
+    font-size: 25px;
 }
 
 /* buttons */
-
 
 button {
     background-color: black;
@@ -89,14 +115,113 @@ button {
 }
 
 #nerdy-glasses {
-    font-size: 25px;
+    font-size: 75px;
     cursor: pointer;
     background: none;
     border: none;
     margin-left: 20px;
 }
 
+#passions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
 
+#passions p {
+    flex: 2;
+    text-align: left;
+    padding: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    border:25px solid #ce9df2;
+}
+
+#passions h1 {
+    cursor: pointer;
+    border: 12px solid #ce9df2;
+    padding: 10px; 
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+    
+#passions .rotationfeature {
+    flex: 1;
+    /* display: flex; */
+    justify-content: center;
+}
+
+#ingram {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;;
+}
+    
+
+#ingram h1 {
+    cursor: pointer;
+    border: 12px solid #590b95;
+    padding: 10px; 
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #590b95;
+}
+#ingram h3 {
+    cursor: pointer;
+    color: #670aad;
+    padding: 10px; 
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border: 10px solid #670aad;
+}
+
+#ingram p {
+    flex: 1;
+    margin-top: 20px;
+    border: 15px solid#670aad;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    padding: 20px;
+    color: #670aad;
+}
+
+
+#ingram img {
+    width: auto;
+    border:15px solid #670aad;
+}
+
+#ingram ul {
+    border: 15px solid#670aad;
+    padding: 40px;
+    color: #4e0884;
+    font-size: 30px;
+}
+
+
+
+
+
+
+
+
+.rotationfeature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
 
 /* BELOW
 
@@ -108,13 +233,19 @@ object-fit = Specifies how the contents of a replaced element should be scaled r
     height: 400px;
     object-fit: cover;
     border-radius: 10px;
+    border: 15px solid#ce9df2;
 }
 
-/* dark mode */
+.rotationfeature button {
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 7px solid#ce9df2;
+}
 
 
 /* dark mode */
-
 
 body.dark-mode {
     background-color: black;
@@ -138,7 +269,6 @@ body.dark-mode button {
     color: black;
 }
 
-
 /* dropdown */
 
 .menu {
@@ -149,6 +279,7 @@ body.dark-mode button {
     background-color: bisque;
     position: absolute;
     border-radius: 10px;
+    font-size: 25px;
 }
 .menu.show {
     display: flex;

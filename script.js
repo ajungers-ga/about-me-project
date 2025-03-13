@@ -1,6 +1,5 @@
 //varaibles
 
-
 // BELOW (Lines 7-22) =
 // 1. This is an ARRAY that that is holding the images for my ROTATION.FEATURE (carousel)
 // 2. I commented out items i DO NOT want to come up in the rotation.feature - These images should be CONSTANT to their current position on the HTML & would be duplicates in carousel.
@@ -22,24 +21,24 @@ const images = [
     "images/young_gideon.JPG"
 ];
 
-// BELOW (line 2) = 
-// This is a VARIABLE that tracks which image is currently displayed. Chose LET instead of CONST since this value SHOULD change based on user interaction.
+// BELOW (line 27) = 
+// This is a VARIABLE that tracks which image is currently displayed. Chose LET instead of CONST since this value SHOULD change based on user interactions (prevButton & nextButton).
 
-let currentIndex = 0;
+let currentIndex = 0; //THIS IS A GLOBAL VARIABLE that will be used for images being displayed and button logic.
 
 
-// BELOW (Lines 43-52)
+// BELOW (Lines 43-52) Defining variables
 
-// 43. grabbing the prevButton element
-// 44. grabbing the nextButton element
-// 45. grabbing the CONTAINER(queryselector)for rotating images 
-// 46. grabbing the GLASSES BUTTON to TOGGLE the NAV MENU
-// 47. grabbing the NAV MENU SECTIONS for toggling hidden
-// 48. grabbing the DARK-MODE toggle
-// 49. grabbing the H1 element to add tooltip hover
-// 50. grabbing the TOOLTIP to display HIDDEN text content
-// 51. grabbing the LINKEDINLINK SPAN to make the content clickable via JS in HTML footer
-// 52. grabbing the EMAIL SPAN to make the content clickable via JS in HTML footer 
+// 43. grabbing the prevButton element by ID (HTML line 74)
+// 44. grabbing the nextButton element by ID (HTML line 75)
+// 45. grabbing the CONTAINER for rotationFeature by queryselector (HTML lines 73-76)
+// 46. grabbing the GLASSES BUTTON to TOGGLE the NAV MENU by ID (HTML line 20)
+// 47. grabbing the NAV MENU SECTIONS for toggling hidden by ID (HTML lines 23-30)
+// 48. grabbing the DARK-MODE toggle by ID (HTML line 15)
+// 49. grabbing the notRealDoctor in H1 by queryselector (HTML line 17) which exists inside the h1.
+// 50. grabbing the TOOLTIP to display HIDDEN text content by ID (HTML line 17)
+// 51. grabbing the LINKEDINLINK SPAN to make the content clickable via JS in (HTML line 116)
+// 52. grabbing the EMAIL SPAN to make the content clickable via JS in (HTML line 117)
 
 const prevButton = document.getElementById("prevbutton");
 const nextButton = document.getElementById("nextbutton");
@@ -49,8 +48,9 @@ const navMenu = document.getElementById('nav-sections');
 const darkModeToggle = document.getElementById('dark-mode');
 const notRealDoctor = document.querySelector('h1');
 const tooltip = document.getElementById('tooltip');
-const linkedInLink = document.getElementById('linkedin-link');
+const linkedInLink = document.getElementById('linkedin-link'); //
 const emailLink = document.getElementById('email-link');
+
 
 
 // BELOW (Lines 69-75 )
@@ -75,13 +75,22 @@ imageElement.width = 200;
 rotationFeature.appendChild(imageElement);
 
 
-
 //functions
 
+//BELOW (Lines 92-94)
 
+// This code block is a function to update the displayed image based on currentIndex in the images array JS (Lines 7-22). 
+// The idea is change the images displayed based on USER ACTIONS (click next/prev buttons)
+// The purpose of the fuction is to update the source (src) of the image that is displayed in the rotationFeature container HTML (lines 73-76). 
+// This function seperates logic of what SHOULD HAPPEN from interactable ACTIONS from the user like clicking nextButton.
+
+// 92. This line defines the function updateImage. 
+// 92. No parameter is needed because the function already knows what to do (it uses the GLOBAL varaible currentIndex)  
+// 93. I am changing the source (src) attribute for imageElement.
+// 93. I am grabbing the string from the array of images based on currentIndex. This line is necessary to make the image change on the users display when clicking next or prev buttons
 
 function updateImage() {
-    imageElement.src = images[currentIndex];
+    imageElement.src = images[currentIndex];                  //ok i just learned how to add comments to an existing line, cool.
 }
 
 
@@ -89,17 +98,25 @@ function updateImage() {
 
 //event listeners
 
+// BELOW (arrow functions) (Lines 114-116)
 
-//BELOW
-//next and prev buttons
+// 114. I am defining the function(nextButton) as part of the .addEventListener. 
+// 114. When the nextButton is CLICKED run the following functions. 
+// 114. () this represents an EMPTY parameter, because my button does not need extra input.
+// 114. => { } defines the ARROW function
 
+// 115. This line INCREASES the current index by 1
+// 115. % images.length is used so that when the user gets to the last image, the currentIndex LOOPS back to 0 (or the first image)
+//
+// 116. This line CALLS the function (updateImage) which was defined earlier to update the displayed image. 
+// 116. With out CALLING the function, the image would never show up on the users screem
 
-nextButton.addEventListener("click", () => {
+nextButton.addEventListener("click", () => {                  // () => this connects our parameters
     currentIndex = (currentIndex + 1) % images.length;
     updateImage();
 })
 
-//BELOW
+//BELOW (lines 126-129)
 //1- currentIndex = (cirrentIndex -1 goes back one image. 
 //2- if current value of currentIndex is 0, we don't want a negative number, rather a loop.  
 //3- + images.length (if currentIndex - 1, adding images.length makes it wrap around)
@@ -109,8 +126,16 @@ nextButton.addEventListener("click", () => {
 prevButton.addEventListener("click", () => {
     currentIndex = (currentIndex - 1 + images.length) % images.length;
     updateImage();
-
 });
+
+
+
+
+
+
+
+
+//line 141 is telling css .show 
 
 nerdyGlassesBtn.addEventListener('click', () => {
     navMenu.classList.toggle('show');
@@ -144,17 +169,28 @@ notRealDoctor.addEventListener('mouseover', () => {
 
 //hide the tool tip 
 
-notRealDoctor.addEventListener('mouseleave', () => {
+notRealDoctor.addEventListener('mouseout', () => {
     tooltip.style.display = 'none';
 });
 
 
 
 
+//linkedInLink is a variable defined (JS Line 51)
+//.addEventListener is a METHOD that waits for a specific EVENT to happen
+// 'click' is the TYPE of EVENT to listen for
+// () the parentheses are empty because no parameters on needed for this function. Not passing any data to it.
+// => is the OPERATOR in the function. It separates the empty parameters from the code.
+// { } Inside these curly braces is the code to run.
+// window.open is a built in JS function that opens a new widow or tab.
+// 'https:.... represents the URL to open my linkedin
+// '_blank' represents the SECOND argument telling the browser to open the URL in a NEW TAB/WINDOW.
+// (without '_blank - the user may be removed from this site and taken directly to the link.
 
+//const linkedInLink = document.getElementById('linkedin-link');
 
 linkedInLink.addEventListener('click', () => {
-    window.open('https://www.linkedin.com/in/alexander-jungers/', '_blank');
+    window.open('https://www.linkedin.com/in/alexander-jungers/', '_mattisawesome');
 });
 
 
