@@ -271,6 +271,13 @@ body.dark-mode button {
 
 /* dropdown */
 
+/* BELOW
+ .menu is set to display: none; so that the content remains hidden UNTIL
+ the event is triggered by a user interaction (in this case: 
+ 
+ Because of this, I need to update menu.show to display: flex;
+  */
+
 .menu {
     display: none;
     list-style: none;

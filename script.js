@@ -26,12 +26,11 @@ const images = [
 
 let currentIndex = 0; //THIS IS A GLOBAL VARIABLE that will be used for images being displayed and button logic.
 
+// BELOW (Lines 43-52, 69) Defining variables
 
-// BELOW (Lines 43-52) Defining variables
-
-// 43. grabbing the prevButton element by ID (HTML line 74)
-// 44. grabbing the nextButton element by ID (HTML line 75)
-// 45. grabbing the CONTAINER for rotationFeature by queryselector (HTML lines 73-76)
+// 43. grabbing the prevButton element by ID (HTML line 82)
+// 44. grabbing the nextButton element by ID (HTML line 83)
+// 45. grabbing the CONTAINER for rotationFeature by queryselector (HTML lines 81-84)
 // 46. grabbing the GLASSES BUTTON to TOGGLE the NAV MENU by ID (HTML line 20)
 // 47. grabbing the NAV MENU SECTIONS for toggling hidden by ID (HTML lines 23-30)
 // 48. grabbing the DARK-MODE toggle by ID (HTML line 15)
@@ -39,13 +38,14 @@ let currentIndex = 0; //THIS IS A GLOBAL VARIABLE that will be used for images b
 // 50. grabbing the TOOLTIP to display HIDDEN text content by ID (HTML line 17)
 // 51. grabbing the LINKEDINLINK SPAN to make the content clickable via JS in (HTML line 116)
 // 52. grabbing the EMAIL SPAN to make the content clickable via JS in (HTML line 117)
+// 69. grabbing the IMAGE ELEMENT, this is stored inside the variable imageElement 
 
 const prevButton = document.getElementById("prevbutton");
 const nextButton = document.getElementById("nextbutton");
-const rotationFeature = document.querySelector(".rotationfeature");
-const nerdyGlassesBtn = document.getElementById('nerdy-glasses');
-const navMenu = document.getElementById('nav-sections');
-const darkModeToggle = document.getElementById('dark-mode');
+const rotationFeature = document.querySelector(".rotationfeature"); //since .rotationFeature is a CLASS im using queryselector not id
+const nerdyGlassesBtn = document.getElementById('nerdy-glasses'); // (HTML line 20, JS lines 137-139, CSS Lines 117-123)
+const navMenu = document.getElementById('nav-sections'); // (HTML Lines 24-29)
+const darkModeToggle = document.getElementById('dark-mode'); // (HTML Line 15)
 const notRealDoctor = document.querySelector('h1');
 const tooltip = document.getElementById('tooltip');
 const linkedInLink = document.getElementById('linkedin-link'); //
@@ -66,7 +66,7 @@ const emailLink = document.getElementById('email-link');
 //     I am GRABBING this container from JS (line 45) and now rotationFeature represents that div in the HTML (lines 73-76)...
 //     This line places image inside that div, without appendChild the image would only exist in the JS memory and never actually be displayed.
 
-const imageElement = document.createElement("img");
+const imageElement = document.createElement("img");    //this is my imageElement Creation
 
 imageElement.src = images[currentIndex];
 imageElement.alt = "My Passions Image";
@@ -75,7 +75,7 @@ imageElement.width = 200;
 rotationFeature.appendChild(imageElement);
 
 
-//functions
+//////                 FUNCTIONS                   //////
 
 //BELOW (Lines 92-94)
 
@@ -89,8 +89,8 @@ rotationFeature.appendChild(imageElement);
 // 93. I am changing the source (src) attribute for imageElement.
 // 93. I am grabbing the string from the array of images based on currentIndex. This line is necessary to make the image change on the users display when clicking next or prev buttons
 
-function updateImage() {
-    imageElement.src = images[currentIndex];                  //ok i just learned how to add comments to an existing line, cool.
+function updateImage() {                    //function declaration
+    imageElement.src = images[currentIndex];               
 }
 
 
@@ -102,7 +102,7 @@ function updateImage() {
 
 // 114. I am defining the function(nextButton) as part of the .addEventListener. 
 // 114. When the nextButton is CLICKED run the following functions. 
-// 114. () this represents an EMPTY parameter, because my button does not need extra input.
+// 114. () this represents an EMPTY parameter (unnamed function), because my button does not need extra input.
 // 114. => { } defines the ARROW function
 
 // 115. This line INCREASES the current index by 1
@@ -112,7 +112,7 @@ function updateImage() {
 // 116. With out CALLING the function, the image would never show up on the users screem
 
 nextButton.addEventListener("click", () => {                  // () => this connects our parameters
-    currentIndex = (currentIndex + 1) % images.length;
+    currentIndex = (currentIndex + 1) % images.length; // the modulus operator makes sure we go back to start (image 0) AFTER last image. Making it a loop.,
     updateImage();
 })
 
@@ -130,16 +130,17 @@ prevButton.addEventListener("click", () => {
 
 
 
+// BELOW =
+// JS controlling actions from the user to toggle my dropdown (nerdyGlasses) & toggle for my dark mode
+// Both are waiting for a click event and then target their specific css sections. 
+//
 
-
-
-
-
-//line 141 is telling css .show 
-
-nerdyGlassesBtn.addEventListener('click', () => {
+//const nerdyGlassesBtn = document.getElementById('nerdy-glasses'); 
+nerdyGlassesBtn.addEventListener('click', () => {   // menu toggle using the nerdy glasses button (HTML Line 20)
     navMenu.classList.toggle('show');
 });
+
+
 
 darkModeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
@@ -163,7 +164,7 @@ darkModeToggle.addEventListener('click', () => {
 
 // BELOW
 
-notRealDoctor.addEventListener('mouseover', () => {
+notRealDoctor.addEventListener('mouseover', () => {           //notRealDoctor = .tooltip
     tooltip.style.display = 'inline';
 });
 
@@ -175,7 +176,7 @@ notRealDoctor.addEventListener('mouseout', () => {
 
 
 
-
+//BELOW
 //linkedInLink is a variable defined (JS Line 51)
 //.addEventListener is a METHOD that waits for a specific EVENT to happen
 // 'click' is the TYPE of EVENT to listen for
@@ -198,7 +199,7 @@ linkedInLink.addEventListener('click', () => {
 
 
 
-// NEEDS WORK!!!!
-emailLink.addEventListener('click', () => {
-    window.location.href = 'mailto:alex.jungers@gmail.com';
-});
+// // NEEDS WORK!!!!
+// emailLink.addEventListener('click', () => {
+//     window.open = ('alex.jungers@gmail.com', 'mattisawesome');
+// });
